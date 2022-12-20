@@ -24,7 +24,6 @@ public class JoinATeamMenu {
 
         System.out.println("Join a team");
 
-
         User pickedUser = userPicker(scanner,users);
 
         Team pickedTeam = teamPicker(scanner,teams);

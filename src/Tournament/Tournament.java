@@ -65,6 +65,8 @@ public abstract class Tournament {
     }
 
     public void addTeam(Team team) {
-        this.teams.add(team);
+        if (team.getType().equals(this.type))
+            this.teams.add(team);
     }
+
 }

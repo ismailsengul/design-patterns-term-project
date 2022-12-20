@@ -19,7 +19,7 @@ public class CreateTeamMenu {
     String name;
     String type;
     int size;
-    ArrayList<User> members = new ArrayList<>();
+    ArrayList<User> members;
 
     Team team;
 
@@ -27,6 +27,7 @@ public class CreateTeamMenu {
         this.users = users;
         this.teams = teams;
         this.tournaments = tournaments;
+        this.members = new ArrayList<>();
 
         System.out.println("Create a new team");
 
@@ -48,14 +49,17 @@ public class CreateTeamMenu {
             break;
 
             case "volleyball" : team = new VolleyballTeam(name,type,size,members);
+            break;
 
             default: System.out.println("Invalid team type. Please try again");
             break;
         }
 
-        System.out.println("Team " + team + " created successfully");
+        if (team != null) {
+            System.out.println("Team " + team + " created successfully");
 
-        teams.add(team);
+            teams.add(team);
+        }
 
         new MainMenu(scanner,users,teams,tournaments);
     }

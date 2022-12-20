@@ -21,12 +21,15 @@ public class CreateTournamentMenu {
     String type;
     int size;
 
+    ArrayList<Team> members;
     Tournament tournament;
 
     public CreateTournamentMenu(Scanner scanner, ArrayList<User> users,ArrayList<Team> teams,ArrayList<Tournament> tournaments){
         this.users = users;
         this.teams = teams;
         this.tournaments = tournaments;
+        this.members = new ArrayList<>();
+
 
         System.out.println("Create a new tournament");
 
@@ -41,21 +44,23 @@ public class CreateTournamentMenu {
 
         switch (type.toLowerCase().trim()) {
 
-            case "football" : tournament = new FootballTournament(name,type,size,teams);
+            case "football" : tournament = new FootballTournament(name,type,size,members);
                 break;
 
-            case "basketball" : tournament = new BasketballTournament(name,type,size,teams);
+            case "basketball" : tournament = new BasketballTournament(name,type,size,members);
                 break;
 
-            case "volleyball" : tournament = new VolleyballTournament(name,type,size,teams);
+            case "volleyball" : tournament = new VolleyballTournament(name,type,size,members);
+                break;
 
             default: System.out.println("Invalid tournament type. Please try again");
                 break;
         }
 
-        System.out.println("Tournament " + tournament + " created successfully");
-
-        tournaments.add(tournament);
+        if ( tournament != null) {
+            System.out.println("Tournament " + tournament + " created successfully");
+            tournaments.add(tournament);
+        }
 
 
         new MainMenu(scanner,users,teams,tournaments);
