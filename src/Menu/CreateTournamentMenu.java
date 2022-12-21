@@ -1,5 +1,6 @@
 package Menu;
 
+import Demo.Application;
 import Team.Team;
 import Tournament.FootballTournament;
 import Tournament.BasketballTournament;
@@ -12,6 +13,7 @@ import java.util.Scanner;
 
 public class CreateTournamentMenu {
 
+    Scanner scanner;
     ArrayList<User> users;
     ArrayList<Team> teams;
 
@@ -24,10 +26,12 @@ public class CreateTournamentMenu {
     ArrayList<Team> members;
     Tournament tournament;
 
-    public CreateTournamentMenu(Scanner scanner, ArrayList<User> users,ArrayList<Team> teams,ArrayList<Tournament> tournaments){
-        this.users = users;
-        this.teams = teams;
-        this.tournaments = tournaments;
+    public CreateTournamentMenu(){
+
+        this.scanner = Application.scanner;
+        this.users = Application.users;
+        this.teams = Application.teams;
+        this.tournaments = Application.tournaments;
         this.members = new ArrayList<>();
 
 
@@ -63,6 +67,6 @@ public class CreateTournamentMenu {
         }
 
 
-        new MainMenu(scanner,users,teams,tournaments);
+        new MainMenu();
     }
 }

@@ -1,5 +1,6 @@
 package Menu;
 
+import Demo.Application;
 import Team.Team;
 import Tournament.Tournament;
 import User.User;
@@ -15,12 +16,12 @@ public class JoinATeamMenu {
     ArrayList<Team> teams;
 
     ArrayList<Tournament> tournaments;
-    public JoinATeamMenu(Scanner scanner, ArrayList<User> users, ArrayList<Team> teams, ArrayList<Tournament> tournaments) {
+    public JoinATeamMenu() {
 
-        this.scanner = scanner;
-        this.users = users;
-        this.teams = teams;
-        this.tournaments = tournaments;
+        this.scanner = Application.scanner;
+        this.users = Application.users;
+        this.teams = Application.teams;
+        this.tournaments = Application.tournaments;
 
         System.out.println("Join a team");
 
@@ -36,7 +37,7 @@ public class JoinATeamMenu {
             }
         });
 
-        new MainMenu(scanner,users,teams,tournaments);
+        new MainMenu();
     }
 
     private Team teamPicker(Scanner scanner, ArrayList<Team> teams) {

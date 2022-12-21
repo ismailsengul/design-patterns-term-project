@@ -1,5 +1,6 @@
 package Menu;
 
+import Demo.Application;
 import Team.Team;
 import Tournament.Tournament;
 import User.User;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 
 public class CreateUserMenu {
 
+    Scanner scanner;
     String name;
     String email;
     int age;
@@ -19,10 +21,12 @@ public class CreateUserMenu {
     ArrayList<Team> teams;
 
     ArrayList<Tournament> tournaments;
-    public CreateUserMenu(Scanner scanner, ArrayList<User> users, ArrayList<Team> teams, ArrayList<Tournament> tournaments) {
-        this.users = users;
-        this.teams = teams;
-        this.tournaments = tournaments;
+    public CreateUserMenu() {
+
+        this.scanner = Application.scanner;
+        this.users = Application.users;
+        this.teams = Application.teams;
+        this.tournaments = Application.tournaments;
         System.out.println("Create a new user");
 
         System.out.print("Name : ");
@@ -39,7 +43,7 @@ public class CreateUserMenu {
         System.out.println("User " + user + " created successfully");
 
         users.add(user);
-        new MainMenu(scanner,users,teams,tournaments);
+        new MainMenu();
 
     }
 }

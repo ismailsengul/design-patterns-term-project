@@ -1,5 +1,6 @@
 package Menu;
 
+import Demo.Application;
 import Team.Team;
 import Tournament.Tournament;
 import User.User;
@@ -19,7 +20,7 @@ public class MainMenu {
 
 
 
-    public MainMenu(Scanner scanner,ArrayList<User> users,ArrayList<Team> teams,ArrayList<Tournament> tournaments){
+    public MainMenu(){
 
         System.out.println("Welcome to the Dream Team App! \n" +
                 "******************************* \n" +
@@ -29,21 +30,21 @@ public class MainMenu {
                 "4) Join a team \n" +
                 "5) Join a tournament \n" +
                 "0) Exit");
-        this.scanner = scanner;
-        this.users = users;
-        this.teams = teams;
-        this.tournaments = tournaments;
+        this.scanner = Application.scanner;
+        this.users = Application.users;
+        this.teams = Application.teams;
+        this.tournaments = Application.tournaments;
         this.choice = scanner.next();
         changeMenu(choice);
     }
 
     public void changeMenu(String choice){
         switch (choice) {
-            case "1" -> new CreateUserMenu(this.scanner,this.users,this.teams,this.tournaments);
-            case "2" -> new CreateTeamMenu(this.scanner,this.users,this.teams,this.tournaments);
-            case "3" -> new CreateTournamentMenu(this.scanner,this.users,this.teams,this.tournaments);
-            case "4" -> new JoinATeamMenu(this.scanner, this.users, this.teams,this.tournaments);
-            case "5" -> new JoinATournamentMenu(this.scanner, this.users, this.teams,this.tournaments);
+            case "1" -> new CreateUserMenu();
+            case "2" -> new CreateTeamMenu();
+            case "3" -> new CreateTournamentMenu();
+            case "4" -> new JoinATeamMenu();
+            case "5" -> new JoinATournamentMenu();
             case "0" -> {
                 System.out.println("Dream team app is closing...");
                 System.exit(0);
