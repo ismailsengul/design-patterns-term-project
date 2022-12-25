@@ -32,21 +32,24 @@ public class TeamMenu {
         this.members = new ArrayList<>();
         this.objectFactory = new ObjectFactory();
 
+        showMenu();
+
+
+    }
+
+    public void showMenu(){
+
         System.out.println("1) Create Team");
         System.out.println("2) Show Teams");
         System.out.println("3) Join a Tournament");
         System.out.println("0) Go Back");
 
-        switch (scanner.next()){
-            case "1" : createTeam();
-            break;
-            case "2" : showTeams();
-            break;
-            case "3" : joinATournament();
+        switch (scanner.next()) {
+            case "1" -> createTeam();
+            case "2" -> showTeams();
+            case "3" -> joinATournament();
+            case "0" -> new MainMenu();
         }
-
-
-        new MainMenu();
     }
 
     public JoinATournamentMenu joinATournament() {

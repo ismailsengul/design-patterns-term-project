@@ -6,9 +6,6 @@ import Menu.CreateUserMenu;
 
 public interface IMenuFactory {
 
-    CreateUserMenu createUserMenu();
-    TeamMenu createTeamMenu();
-
-    CreateTournamentMenu createTournamentMenu();
+    void createMenu(String type);
 
 }

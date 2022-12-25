@@ -6,18 +6,20 @@ import Menu.CreateUserMenu;
 
 public class MenuFactory implements IMenuFactory{
 
-    @Override
-    public CreateUserMenu createUserMenu() {
-        return new CreateUserMenu();
-    }
 
     @Override
-    public TeamMenu createTeamMenu() {
-        return new TeamMenu();
-    }
+    public void createMenu(String type) {
 
-    @Override
-    public CreateTournamentMenu createTournamentMenu() {
-        return new CreateTournamentMenu();
+        switch (type) {
+            case "1" ->  new CreateUserMenu(); //will be user menu
+            case "2" -> new TeamMenu();
+            case "3" -> new CreateTournamentMenu(); //will be tournament menu
+            case "0" -> {
+                System.out.println("Dream team app is closing...");
+                System.exit(0);
+            }
+
+        };
+
     }
 }

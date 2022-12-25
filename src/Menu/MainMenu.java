@@ -33,7 +33,6 @@ public class MainMenu {
                 "1) User Menu \n" +
                 "2) Team Menu \n" +
                 "3) Tournament Menu \n" +
-                "4) Join a team \n" + // will be in user menu
                 "0) Exit");
         this.scanner = Application.scanner;
         this.users = Application.users;
@@ -44,20 +43,14 @@ public class MainMenu {
     }
 
     public void changeMenu(String choice){
-        switch (choice) {
-            case "1" -> menuFactory.createUserMenu();
-            case "2" -> menuFactory.createTeamMenu();
-            case "3" -> new CreateTournamentMenu();
-            case "4" -> new JoinATeamMenu();
-            case "0" -> {
-                System.out.println("Dream team app is closing...");
-                System.exit(0);
-            }
-            default -> {
-                System.out.println("Invalid choice. Please try again...");
-                choice = this.scanner.next();
-            }
-        }
+       if (choice.equals("0") || choice.equals("1")||choice.equals("2") || choice.equals("3")){
+           menuFactory.createMenu(choice);
+       }else {
+           System.out.println("Invalid choice. Please try again...");
+           choice = this.scanner.next();
+           changeMenu(choice);
+       }
+
     }
 
     public ArrayList<User> getUsers() {
