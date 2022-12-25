@@ -4,43 +4,57 @@ import Demo.Application;
 import Factory.IObjectFactory;
 import Factory.ObjectFactory;
 import Team.Team;
-import Tournament.FootballTournament;
-import Tournament.BasketballTournament;
-import Tournament.VolleyballTournament;
 import Tournament.Tournament;
 import User.User;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CreateTournamentMenu {
+public class TeamMenu {
 
     Scanner scanner;
     ArrayList<User> users;
     ArrayList<Team> teams;
 
     ArrayList<Tournament> tournaments;
-
     String name;
     String type;
     int size;
-
-    ArrayList<Team> members;
-    Tournament tournament;
-
+    ArrayList<User> members;
     IObjectFactory objectFactory;
 
-    public CreateTournamentMenu(){
+    public TeamMenu(){
 
         this.scanner = Application.scanner;
         this.users = Application.users;
         this.teams = Application.teams;
         this.tournaments = Application.tournaments;
         this.members = new ArrayList<>();
-        objectFactory = new ObjectFactory();
+        this.objectFactory = new ObjectFactory();
+
+        System.out.println("1) Create Team");
+        System.out.println("2) Show Teams");
+        System.out.println("3) Join a Tournament");
+        System.out.println("0) Go Back");
+
+        switch (scanner.next()){
+            case "1" : createTeam();
+            break;
+            case "2" : showTeams();
+            break;
+            case "3" : joinATournament();
+        }
 
 
-        System.out.println("Create a new tournament");
+        new MainMenu();
+    }
+
+    public JoinATournamentMenu joinATournament() {
+        return new JoinATournamentMenu();
+    }
+
+    public void createTeam(){
+        System.out.println("Create a new team");
 
         System.out.println("1) Football Team");
         System.out.println("2) Basketball Team");
@@ -51,18 +65,15 @@ public class CreateTournamentMenu {
         System.out.print("Name : ");
         this.name = scanner.next();
 
-        System.out.println("Size : ");
+        System.out.print("Size :");
         this.size = scanner.nextInt();
 
-        objectFactory.createTournament(type,name,size,members);
+        objectFactory.createTeam(type,name,size,members);
+    }
 
-
-        if ( tournament != null) {
-            System.out.println("Tournament " + tournament + " created successfully");
-            tournaments.add(tournament);
+    public void showTeams(){
+        for (Team team: teams) {
+            System.out.println(team);
         }
-
-
-        new MainMenu();
     }
 }

@@ -1,6 +1,8 @@
 package Menu;
 
 import Demo.Application;
+import Factory.IObjectFactory;
+import Factory.ObjectFactory;
 import Team.Team;
 import Tournament.Tournament;
 import User.User;
@@ -21,12 +23,15 @@ public class CreateUserMenu {
     ArrayList<Team> teams;
 
     ArrayList<Tournament> tournaments;
+
+    IObjectFactory objectFactory;
     public CreateUserMenu() {
 
         this.scanner = Application.scanner;
         this.users = Application.users;
         this.teams = Application.teams;
         this.tournaments = Application.tournaments;
+        objectFactory = new ObjectFactory();
         System.out.println("Create a new user");
 
         System.out.print("Name : ");
@@ -38,7 +43,7 @@ public class CreateUserMenu {
         System.out.print("Age :");
         this.age = scanner.nextInt();
 
-        this.user = new User(name,email,age);
+        this.user = objectFactory.createUser(name,email,age);
 
         System.out.println("User " + user + " created successfully");
 
