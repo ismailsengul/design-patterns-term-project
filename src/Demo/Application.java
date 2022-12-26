@@ -32,19 +32,19 @@ public class Application {
         User user2 = new User("Yunus Emre","yunus@gmail.com",22);
         users.add(user2);
 
-        Team team1 = new FootballTeam("Fenerbahce","Football",7,new ArrayList<User>());
+        Team team1 = new FootballTeam("Fenerbahce",7,new ArrayList<User>());
         team1.addMember(user1);
         teams.add(team1);
 
-        Team team2 = new BasketballTeam("Galatasaray","Basketball",5,new ArrayList<User>());
+        Team team2 = new BasketballTeam("Galatasaray",5,new ArrayList<User>());
         team2.addMember(user2);
         teams.add(team2);
 
-        Tournament tournament1 = new FootballTournament("Drem Football","Football",5,new ArrayList<Team>());
+        Tournament tournament1 = new FootballTournament("Dream Football",5,new ArrayList<Team>());
         tournament1.addTeam(team1);
         tournaments.add(tournament1);
 
-        Tournament tournament2 = new BasketballTournament("Drem Basketball","Basketball",7,new ArrayList<Team>());
+        Tournament tournament2 = new BasketballTournament("Dream Basketball",7,new ArrayList<Team>());
         tournament2.addTeam(team2);
         tournaments.add(tournament2);
 

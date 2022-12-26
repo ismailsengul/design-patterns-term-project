@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class BasketballTournament extends Tournament{
 
-    public BasketballTournament(String name, String type, int size, ArrayList<Team> teams) {
-        super(name, type, size, teams);
+    public BasketballTournament(String name,int size, ArrayList<Team> teams) {
+        super(name, "Basketball", size, teams);
     }
 }
