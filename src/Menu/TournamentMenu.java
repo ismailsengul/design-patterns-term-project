@@ -10,7 +10,7 @@ import User.User;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TeamMenu {
+public class TournamentMenu {
 
     Scanner scanner;
     ArrayList<User> users;
@@ -20,10 +20,10 @@ public class TeamMenu {
     String name;
     String type;
     int size;
-    ArrayList<User> members;
+    ArrayList<Team> members;
     IObjectFactory objectFactory;
 
-    public TeamMenu(){
+    public TournamentMenu(){
 
         this.scanner = Application.scanner;
         this.users = Application.users;
@@ -39,33 +39,27 @@ public class TeamMenu {
 
     public void showMenu(){
 
-        System.out.println("1) Create Team");
-        System.out.println("2) Show Teams");
-        System.out.println("3) Join a Tournament");
+        System.out.println("1) Create Tournament");
+        System.out.println("2) Show Tournaments");
         System.out.println("0) Go Back");
 
         switch (scanner.next()) {
-            case "1" -> createTeam();
-            case "2" -> showTeams();
-            case "3" -> joinATournament();
+            case "1" -> createTournament();
+            case "2" -> showTournaments();
             case "0" -> new MainMenu();
             default -> {
                 System.out.println("Invalid choice.");
-                new TeamMenu();
+                new TournamentMenu();
             }
         }
     }
 
-    public void joinATournament() {
-        new JoinATournamentMenu();
-    }
+    public void createTournament(){
+        System.out.println("Create a new tournament");
 
-    public void createTeam(){
-        System.out.println("Create a new team");
-
-        System.out.println("1) Football Team");
-        System.out.println("2) Basketball Team");
-        System.out.println("3) Volleyball Team");
+        System.out.println("1) Football Tournament");
+        System.out.println("2) Basketball Tournament");
+        System.out.println("3) Volleyball Tournament");
 
         this.type = scanner.next();
 
@@ -75,14 +69,14 @@ public class TeamMenu {
         System.out.print("Size :");
         this.size = scanner.nextInt();
 
-        objectFactory.createTeam(type,name,size,members);
-        new TeamMenu();
+        objectFactory.createTournament(type,name,size,members);
+        new TournamentMenu();
     }
 
-    public void showTeams(){
-        for (Team team: teams) {
-            System.out.println(team);
+    public void showTournaments(){
+        for (Tournament tournament: tournaments) {
+            System.out.println(tournament);
         }
-        new TeamMenu();
+        new TournamentMenu();
     }
 }

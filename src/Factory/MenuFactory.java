@@ -1,8 +1,8 @@
 package Factory;
 
 import Menu.TeamMenu;
-import Menu.CreateTournamentMenu;
-import Menu.CreateUserMenu;
+import Menu.TournamentMenu;
+import Menu.UserMenu;
 
 public class MenuFactory implements IMenuFactory{
 
@@ -11,9 +11,9 @@ public class MenuFactory implements IMenuFactory{
     public void createMenu(String type) {
 
         switch (type) {
-            case "1" ->  new CreateUserMenu(); //will be user menu
+            case "1" ->  new UserMenu();
             case "2" -> new TeamMenu();
-            case "3" -> new CreateTournamentMenu(); //will be tournament menu
+            case "3" -> new TournamentMenu(); //will be tournament menu
             case "0" -> {
                 System.out.println("Dream team app is closing...");
                 System.exit(0);

@@ -8,11 +8,12 @@ import java.util.ArrayList;
 
 public class ObjectFactory implements IObjectFactory {
 
+    IUserFactory userFactory = new UserFactory();
     ITeamFactory teamFactory = new TeamFactory();
     ITournamentFactory tournamentFactory = new TournamentFactory();
     @Override
     public User createUser(String name, String email, int age) {
-        return new User(name,email,age);
+        return userFactory.createUser(name,email,age);
     }
 
     @Override
