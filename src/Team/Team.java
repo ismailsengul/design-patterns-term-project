@@ -14,11 +14,11 @@ public abstract class Team {
 
 
 
-    public Team(String name, String type, int size, ArrayList<User> members){
+    public Team(String name, String type, int size){
         this.name = name;
         this.type = type;
         this.size = size;
-        this.members = members;
+        this.members = new ArrayList<>();
     }
 
     public void printMembers(){

@@ -17,7 +17,7 @@ public class ObjectFactory implements IObjectFactory {
     }
 
     @Override
-    public Team createTeam(String type,String name,int size, ArrayList<User> members) {
+    public Team createTeam(String type,String name,int size) {
         Team team;
         switch (type) {
             case "1" -> teamFactory = new FootballTeamFactory();
@@ -29,7 +29,7 @@ public class ObjectFactory implements IObjectFactory {
             }
         }
 
-        team = teamFactory.createTeam(name,size,members);
+        team = teamFactory.createTeam(name,size);
         return team;
     }
 
@@ -46,7 +46,7 @@ public class ObjectFactory implements IObjectFactory {
             }
         }
 
-        tournament = tournamentFactory.createTournament(name,size,members);
+        tournament = tournamentFactory.createTournament(name,size);
         return tournament;
     }
 }

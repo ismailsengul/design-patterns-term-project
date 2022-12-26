@@ -3,6 +3,8 @@ package Menu;
 import Demo.Application;
 import Factory.IObjectFactory;
 import Factory.ObjectFactory;
+import Strategy.IShowAllStrategy;
+import Strategy.UserShowAllStrategy;
 import Team.Team;
 import Tournament.Tournament;
 import User.User;
@@ -13,21 +15,17 @@ import java.util.Scanner;
 public class UserMenu {
 
     Scanner scanner;
-    ArrayList<User> users;
-    ArrayList<Team> teams;
-    ArrayList<Tournament> tournaments;
     String name;
     String email;
     int age;
     IObjectFactory objectFactory;
+    IShowAllStrategy showAllStrategy;
 
     public UserMenu(){
 
         this.scanner = Application.scanner;
-        this.users = Application.users;
-        this.teams = Application.teams;
-        this.tournaments = Application.tournaments;
         this.objectFactory = new ObjectFactory();
+        this.showAllStrategy = new UserShowAllStrategy();
 
         showMenu();
 
@@ -43,7 +41,7 @@ public class UserMenu {
 
         switch (scanner.next()) {
             case "1" -> createUser();
-            case "2" -> showUsers();
+            case "2" -> showAllStrategy.showAll();
             case "3" -> joinATeam();
             case "0" -> new MainMenu();
             default -> {
@@ -63,10 +61,10 @@ public class UserMenu {
         System.out.print("Name : ");
         this.name = scanner.next();
 
-        System.out.print("Email :");
+        System.out.print("Email : ");
         this.email = scanner.next();
 
-        System.out.print("Age :");
+        System.out.print("Age : ");
         this.age = scanner.nextInt();
 
         objectFactory.createUser(name,email,age);
@@ -74,10 +72,4 @@ public class UserMenu {
         new UserMenu();
     }
 
-    public void showUsers(){
-        for (User user: users) {
-            System.out.println(user);
-        }
-        new UserMenu();
-    }
 }

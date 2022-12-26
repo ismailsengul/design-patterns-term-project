@@ -3,6 +3,8 @@ package Menu;
 import Demo.Application;
 import Factory.IObjectFactory;
 import Factory.ObjectFactory;
+import Strategy.IShowAllStrategy;
+import Strategy.TeamShowAllStrategy;
 import Team.Team;
 import Tournament.Tournament;
 import User.User;
@@ -13,24 +15,20 @@ import java.util.Scanner;
 public class TeamMenu {
 
     Scanner scanner;
-    ArrayList<User> users;
-    ArrayList<Team> teams;
 
-    ArrayList<Tournament> tournaments;
     String name;
     String type;
     int size;
     ArrayList<User> members;
     IObjectFactory objectFactory;
+    IShowAllStrategy showAllStrategy;
 
     public TeamMenu(){
 
         this.scanner = Application.scanner;
-        this.users = Application.users;
-        this.teams = Application.teams;
-        this.tournaments = Application.tournaments;
         this.members = new ArrayList<>();
         this.objectFactory = new ObjectFactory();
+        this.showAllStrategy = new TeamShowAllStrategy();
 
         showMenu();
 
@@ -46,7 +44,7 @@ public class TeamMenu {
 
         switch (scanner.next()) {
             case "1" -> createTeam();
-            case "2" -> showTeams();
+            case "2" -> showAllStrategy.showAll();
             case "3" -> joinATournament();
             case "0" -> new MainMenu();
             default -> {
@@ -72,17 +70,10 @@ public class TeamMenu {
         System.out.print("Name : ");
         this.name = scanner.next();
 
-        System.out.print("Size :");
+        System.out.print("Size : ");
         this.size = scanner.nextInt();
 
-        objectFactory.createTeam(type,name,size,members);
-        new TeamMenu();
-    }
-
-    public void showTeams(){
-        for (Team team: teams) {
-            System.out.println(team);
-        }
+        objectFactory.createTeam(type,name,size);
         new TeamMenu();
     }
 }

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class VolleyballTournamentFactory implements ITournamentFactory{
     @Override
-    public Tournament createTournament(String name, int size, ArrayList<Team> members) {
-        Tournament tournament = new VolleyballTournament(name,size,members);
+    public Tournament createTournament(String name, int size) {
+        Tournament tournament = new VolleyballTournament(name,size);
         Application.tournaments.add(tournament);
         return tournament;
     }

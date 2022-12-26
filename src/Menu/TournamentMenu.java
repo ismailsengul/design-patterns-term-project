@@ -3,6 +3,8 @@ package Menu;
 import Demo.Application;
 import Factory.IObjectFactory;
 import Factory.ObjectFactory;
+import Strategy.IShowAllStrategy;
+import Strategy.TournamentShowAllStrategy;
 import Team.Team;
 import Tournament.Tournament;
 import User.User;
@@ -22,6 +24,7 @@ public class TournamentMenu {
     int size;
     ArrayList<Team> members;
     IObjectFactory objectFactory;
+    IShowAllStrategy showAllStrategy;
 
     public TournamentMenu(){
 
@@ -31,6 +34,7 @@ public class TournamentMenu {
         this.tournaments = Application.tournaments;
         this.members = new ArrayList<>();
         this.objectFactory = new ObjectFactory();
+        this.showAllStrategy = new TournamentShowAllStrategy();
 
         showMenu();
 
@@ -45,7 +49,7 @@ public class TournamentMenu {
 
         switch (scanner.next()) {
             case "1" -> createTournament();
-            case "2" -> showTournaments();
+            case "2" -> showAllStrategy.showAll();
             case "0" -> new MainMenu();
             default -> {
                 System.out.println("Invalid choice.");
@@ -66,17 +70,10 @@ public class TournamentMenu {
         System.out.print("Name : ");
         this.name = scanner.next();
 
-        System.out.print("Size :");
+        System.out.print("Size : ");
         this.size = scanner.nextInt();
 
         objectFactory.createTournament(type,name,size,members);
-        new TournamentMenu();
-    }
-
-    public void showTournaments(){
-        for (Tournament tournament: tournaments) {
-            System.out.println(tournament);
-        }
         new TournamentMenu();
     }
 }

@@ -10,5 +10,5 @@ import java.util.ArrayList;
 
 public interface ITeamFactory {
 
-    Team createTeam(String name, int size, ArrayList<User> members);
+    Team createTeam(String name, int size);
 }

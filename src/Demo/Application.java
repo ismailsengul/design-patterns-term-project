@@ -32,24 +32,24 @@ public class Application {
         User user2 = new User("Yunus Emre","yunus@gmail.com",22);
         users.add(user2);
 
-        Team team1 = new FootballTeam("Fenerbahce",7,new ArrayList<User>());
+        Team team1 = new FootballTeam("Fenerbahce",7);
         team1.addMember(user1);
         teams.add(team1);
 
-        Team team2 = new BasketballTeam("Galatasaray",5,new ArrayList<User>());
+        Team team2 = new BasketballTeam("Galatasaray",5);
         team2.addMember(user2);
         teams.add(team2);
 
-        Tournament tournament1 = new FootballTournament("Dream Football",5,new ArrayList<Team>());
+        Tournament tournament1 = new FootballTournament("Dream Football",5);
         tournament1.addTeam(team1);
         tournaments.add(tournament1);
 
-        Tournament tournament2 = new BasketballTournament("Dream Basketball",7,new ArrayList<Team>());
+        Tournament tournament2 = new BasketballTournament("Dream Basketball",7);
         tournament2.addTeam(team2);
         tournaments.add(tournament2);
 
         boolean run = true;
-        MainMenu mainMenu = new MainMenu();
+        new MainMenu();
 
 
         while (run) {

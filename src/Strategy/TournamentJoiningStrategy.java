@@ -5,6 +5,8 @@
  */
 package Strategy;
 
+import Demo.Application;
+import Menu.TeamMenu;
 import Team.Team;
 import Tournament.Tournament;
 
@@ -16,8 +18,22 @@ public class TournamentJoiningStrategy implements IJoiningStrategy<Team, Tournam
 
     @Override
     public void join(Team team, Tournament tournament) {
-        tournament.addTeam(team);
-        System.out.println("Tournament Strategy is using...");
+        if (team.getType().equals(tournament.getType())) {
+            tournament.addTeam(team);
+            Application.tournaments.forEach(
+                    tournament1 -> {
+                        if (tournament1.getName().equals(tournament.getName())){
+                            tournament1.setTeams(tournament.getTeams());
+                        }
+                    }
+            );
+        }
+        else {
+            System.out.println("Only " + tournament.getType() + " teams can join this tournament");
+            new TeamMenu();
+        }
+
+
     }
     
 }

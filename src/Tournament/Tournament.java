@@ -13,11 +13,11 @@ public abstract class Tournament {
     ArrayList<Team> teams;
 
 
-    public Tournament(String name, String type, int size, ArrayList<Team> teams) {
+    public Tournament(String name, String type, int size) {
         this.name = name;
         this.type = type;
         this.size = size;
-        this.teams = teams;
+        this.teams = new ArrayList<>();
     }
 
 

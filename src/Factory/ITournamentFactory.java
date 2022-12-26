@@ -11,5 +11,5 @@ import java.util.ArrayList;
 
 public interface ITournamentFactory {
 
-    Tournament createTournament(String name, int size, ArrayList<Team> members);
+    Tournament createTournament(String name, int size);
 }

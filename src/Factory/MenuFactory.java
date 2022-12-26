@@ -19,7 +19,7 @@ public class MenuFactory implements IMenuFactory{
                 System.exit(0);
             }
 
-        };
+        }
 
     }
 }

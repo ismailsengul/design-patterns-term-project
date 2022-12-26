@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class FootballTeamFactory implements ITeamFactory{
     @Override
-    public Team createTeam(String name, int size, ArrayList<User> members) {
-        Team team = new FootballTeam(name,size,members);
+    public Team createTeam(String name, int size) {
+        Team team = new FootballTeam(name,size);
         Application.teams.add(team);
         System.out.println("Team " + team + " created successfully");
         return team;

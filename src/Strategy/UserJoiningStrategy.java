@@ -5,6 +5,7 @@
  */
 package Strategy;
 
+import Demo.Application;
 import Team.Team;
 import User.User;
 
@@ -18,7 +19,11 @@ public class UserJoiningStrategy implements IJoiningStrategy<User, Team> {
     @Override
     public void join(User user, Team team) {
         team.addMember(user);
-        System.out.println("User Strategy is using...");
+        Application.teams.forEach(team1 -> {
+            if (team1.getName().equals(team.getName())){
+                team1.setMembers(team.getMembers());
+            }
+        });
     }
     
 }
