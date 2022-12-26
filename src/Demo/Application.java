@@ -8,6 +8,7 @@ import Team.FootballTeam;
 import Team.BasketballTeam;
 import Tournament.BasketballTournament;
 import Tournament.FootballTournament;
+import Tournament.VolleyballTournament;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -47,6 +48,9 @@ public class Application {
         Tournament tournament2 = new BasketballTournament("Dream Basketball",7);
         tournament2.addTeam(team2);
         tournaments.add(tournament2);
+
+        Tournament tournament3 = new VolleyballTournament("Dream Volleyball",10);
+        tournaments.add(tournament3);
 
         boolean run = true;
         new MainMenu();
