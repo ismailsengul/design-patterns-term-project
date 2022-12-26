@@ -1,6 +1,8 @@
 package Menu;
 
 import Demo.Application;
+import Strategy.IJoiningStrategy;
+import Strategy.UserJoiningStrategy;
 import Team.Team;
 import Tournament.Tournament;
 import User.User;
@@ -22,6 +24,7 @@ public class JoinATeamMenu {
         this.users = Application.users;
         this.teams = Application.teams;
         this.tournaments = Application.tournaments;
+        IJoiningStrategy strategy = new UserJoiningStrategy();
 
         System.out.println("Join a team");
 
@@ -29,7 +32,7 @@ public class JoinATeamMenu {
 
         Team pickedTeam = teamPicker(scanner,teams);
 
-        pickedTeam.addMember(pickedUser);
+        strategy.join(pickedUser, pickedTeam);
 
         teams.forEach(team -> {
             if (Objects.equals(team.getName(), pickedTeam.getName())) {
